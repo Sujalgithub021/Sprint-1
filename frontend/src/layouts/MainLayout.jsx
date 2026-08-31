@@ -88,31 +88,24 @@ function MainLayout() {
             />
           </div>
 
-          <button
-  onClick={() =>
-    requireLogin(() =>
-      navigate("/create-listing")
-    )
-  }
->
-  + Post Item
-</button>
+          
 
           <div className="top-actions">
 
-            <span>💬</span>
+            <span><NavLink to="/messages" className="nav-item">
+             💬
+          </NavLink></span>
 
             <span>🔔</span>
 
             <div className="user-info">
               <div className="user-avatar">
-                👤
+               <NavLink to="/profile" className="nav-item">
+             👤
+          </NavLink> 
               </div>
 
-              <div>
-                <strong>Student</strong>
-                <small>Campus User</small>
-              </div>
+              
             </div>
 
           </div>

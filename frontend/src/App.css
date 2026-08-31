@@ -917,7 +917,7 @@ button:hover{
 ===================================================== */
 
 .message-form {
-  background: #181a1d;
+  background: #e8e8e8;
   border: 1px solid #2d3035;
   border-radius: 18px;
   padding: 26px;
@@ -931,11 +931,11 @@ button:hover{
 
 .message-form > p {
   margin: 8px 0;
-  color: #b6b6b6;
+  color: #7d7d7d;
 }
 
 .message-form > p strong {
-  color: #ffffff;
+  color: #5b3cff;
 }
 
 
@@ -1006,7 +1006,7 @@ button:hover{
 ===================================================== */
 
 .messages-list {
-  background: #181a1d;
+  background: #d2d2d2;
   border: 1px solid #2d3035;
   border-radius: 18px;
   padding: 26px;
@@ -1033,7 +1033,7 @@ button:hover{
 
   margin-bottom: 12px;
 
-  background: #1e2023;
+  background: whitesmoke;
   border: 1px solid #303339;
   border-radius: 14px;
 
@@ -1065,7 +1065,7 @@ button:hover{
   font-size: 17px;
   font-weight: 600;
 
-  color: #ffffff;
+  color: #5b2cff;
 }
 
 .conversation-card p {
@@ -1076,7 +1076,7 @@ button:hover{
 }
 
 .conversation-card p:nth-of-type(2) {
-  color: #d1d1d1;
+  color: black;
 
   white-space: nowrap;
   overflow: hidden;
@@ -1400,6 +1400,7 @@ button:hover{
 
 .deals-header {
   margin-bottom: 28px;
+  
 }
 
 .deals-header h1 {
@@ -1418,7 +1419,7 @@ button:hover{
 ========================================= */
 
 .deal-form {
-  background: #181a1d;
+  background: #dedede;
   border: 1px solid #2d3035;
   border-radius: 18px;
   padding: 26px;
@@ -1434,7 +1435,7 @@ button:hover{
   grid-template-columns: 2fr 1fr 1fr;
   gap: 20px;
 
-  background: #202226;
+  background: #dedede;
   border: 1px solid #303339;
   border-radius: 12px;
 
@@ -1556,7 +1557,7 @@ button:hover{
 ========================================= */
 
 .deals-list {
-  background: #181a1d;
+  background: #dedede;
 
   border: 1px solid #2d3035;
 
@@ -1571,7 +1572,14 @@ button:hover{
   justify-content: space-between;
 
   margin-bottom: 20px;
+  
 }
+
+.deal-product-icon{
+  background-color: #dedede;
+}
+
+
 
 .deals-list-header h2 {
   margin: 0;
@@ -1589,7 +1597,7 @@ button:hover{
 
 .deal-card {
   border: 1px solid #303339;
-  background: #1f2124;
+  background: #dedede;
 
   border-radius: 14px;
 
@@ -1618,7 +1626,7 @@ button:hover{
 
   border-radius: 12px;
 
-  background: #29232f;
+  background: #dedede;
 
   font-size: 22px;
 }
@@ -3676,6 +3684,7 @@ button:hover{
   font-size: 38px;
   font-weight: 800;
   letter-spacing: -1px;
+  color: #5b2be0;
 }
 
 .exchange-header p {
@@ -3864,7 +3873,7 @@ button:hover{
   text-align: center;
   border: 1px solid #302d38;
   border-radius: 18px;
-  background: #17161a;
+  background: rgb(232, 232, 232);
 }
 
 .exchange-empty-icon {
@@ -3882,6 +3891,7 @@ button:hover{
 .exchange-empty h2 {
   margin: 0 0 10px;
   font-size: 24px;
+ color: black;
 }
 
 .exchange-empty p {
@@ -4970,11 +4980,13 @@ button:hover{
   align-items: center;
   justify-content: space-between;
   margin-top: 18px;
+  
 }
 
 .my-listing-price {
   font-size: 23px;
   font-weight: 800;
+  
 }
 
 .my-listing-footer button {
@@ -5100,6 +5112,7 @@ button:hover{
   justify-content: space-between;
 
   gap: 20px;
+  
 }
 
 
@@ -5110,7 +5123,7 @@ button:hover{
 .my-listing-price {
   font-size: 28px;
   font-weight: 700;
-  color: #f1f1f1;
+  color: black;
 }
 
 

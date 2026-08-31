@@ -980,7 +980,7 @@ const confirmMeetup = async (deal) => {
                       📦
                     </div>
 
-                    <div>
+                    <div >
 
                       <h3>
                         {productName}
