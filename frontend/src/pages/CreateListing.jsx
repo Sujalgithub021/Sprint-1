@@ -47,7 +47,7 @@ function CreateListing() {
       try {
 
         const response = await axios.get(
-          "http://127.0.0.1:8000/categories/"
+          "https://sprint-1-hr8e.onrender.com/categories/"
         );
 
         setCategories(response.data);
@@ -264,7 +264,7 @@ function CreateListing() {
 
       const response = await axios.post(
 
-        "http://127.0.0.1:8000/listings/",
+        "https://sprint-1-hr8e.onrender.com/listings/",
 
         {
 
@@ -328,7 +328,7 @@ function CreateListing() {
 
           await axios.post(
 
-            "http://127.0.0.1:8000/listing-images/",
+            "https://sprint-1-hr8e.onrender.com/listing-images/",
 
             {
 

@@ -57,7 +57,7 @@ function NearbySellers() {
 
           const response =
             await axios.get(
-              "http://127.0.0.1:8000/listings/nearby",
+              "https://sprint-1-hr8e.onrender.com/listings/nearby",
               {
                 params: {
                   latitude: latitude,

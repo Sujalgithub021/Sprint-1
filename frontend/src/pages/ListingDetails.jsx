@@ -70,7 +70,7 @@ function ListingDetails() {
       setError("");
 
       const response = await axios.get(
-        `http://127.0.0.1:8000/listings/${id}`
+        `https://sprint-1-hr8e.onrender.com/listings/${id}`
       );
 
       setListing(response.data);
@@ -107,7 +107,7 @@ function ListingDetails() {
       }
 
       await axios.post(
-        `http://127.0.0.1:8000/favorites/?listing_id=${id}`,
+        `https://sprint-1-hr8e.onrender.com/favorites/?listing_id=${id}`,
         {},
         {
           headers: {
@@ -148,7 +148,7 @@ const fetchMyListings = async () => {
     }
 
     const response = await axios.get(
-      "http://127.0.0.1:8000/listings/my",
+      "https://sprint-1-hr8e.onrender.com/listings/my",
       {
         headers: {
           Authorization:
@@ -232,7 +232,7 @@ const fetchMyListings = async () => {
 
       await axios.post(
 
-        "http://127.0.0.1:8000/exchanges/",
+        "https://sprint-1-hr8e.onrender.com/exchanges/",
 
         {
           receiver_id:

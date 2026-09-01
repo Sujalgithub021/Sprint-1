@@ -78,7 +78,7 @@ function Deals() {
       const token = localStorage.getItem("token");
 
       const response = await axios.get(
-        "http://127.0.0.1:8000/auth/me",
+        "https://sprint-1-hr8e.onrender.com/auth/me",
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -106,7 +106,7 @@ function Deals() {
   const fetchListings = async () => {
     try {
       const response = await axios.get(
-        "http://127.0.0.1:8000/listings/"
+        "https://sprint-1-hr8e.onrender.com/listings/"
       );
 
       setListings(response.data);
@@ -124,7 +124,7 @@ function Deals() {
       const token = localStorage.getItem("token");
 
       const response = await axios.get(
-        "http://127.0.0.1:8000/deals/",
+        "https://sprint-1-hr8e.onrender.com/deals/",
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -219,7 +219,7 @@ function Deals() {
       const token = localStorage.getItem("token");
 
       const response = await axios.post(
-        "http://127.0.0.1:8000/deals/",
+        "https://sprint-1-hr8e.onrender.com/deals/",
         {
           listing_id: Number(listingId),
 
@@ -354,7 +354,7 @@ const confirmMeetup = async (deal) => {
     // ==============================
 
     const response = await axios.put(
-      `http://127.0.0.1:8000/deals/${deal.id}`,
+      `https://sprint-1-hr8e.onrender.com/deals/${deal.id}`,
       payload,
       {
         headers: {
@@ -443,7 +443,7 @@ const confirmMeetup = async (deal) => {
       const token = localStorage.getItem("token");
 
       const response = await axios.put(
-        `http://127.0.0.1:8000/deals/${deal.id}`,
+        `https://sprint-1-hr8e.onrender.com/deals/${deal.id}`,
         {
           meetup_location: cleanLocation
         },
@@ -540,7 +540,7 @@ const confirmMeetup = async (deal) => {
       const token = localStorage.getItem("token");
 
       const response = await axios.put(
-        `http://127.0.0.1:8000/deals/${deal.id}`,
+        `https://sprint-1-hr8e.onrender.com/deals/${deal.id}`,
         {
           status: "Completed"
         },
@@ -611,7 +611,7 @@ const confirmMeetup = async (deal) => {
       const token = localStorage.getItem("token");
 
       const response = await axios.put(
-        `http://127.0.0.1:8000/deals/${deal.id}`,
+        `https://sprint-1-hr8e.onrender.com/deals/${deal.id}`,
         {
           status: "Cancelled"
         },
@@ -692,7 +692,7 @@ const confirmMeetup = async (deal) => {
         Number(reviewDeal.seller_id);
 
       await axios.post(
-        "http://127.0.0.1:8000/reviews/",
+        "https://sprint-1-hr8e.onrender.com/reviews/",
         {
           deal_id: Number(reviewDeal.id),
 

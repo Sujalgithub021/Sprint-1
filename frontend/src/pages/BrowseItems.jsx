@@ -20,7 +20,7 @@ function BrowseItems() {
   const fetchListings = async () => {
     try {
       const response = await axios.get(
-        "http://127.0.0.1:8000/listings/"
+        "https://sprint-1-hr8e.onrender.com/listings/"
       );
 
       setListings(response.data);
@@ -44,7 +44,7 @@ function BrowseItems() {
       }
 
       const response = await axios.get(
-        "http://127.0.0.1:8000/favorites/",
+        "https://sprint-1-hr8e.onrender.com/favorites/",
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -90,7 +90,7 @@ function BrowseItems() {
       if (isFavorite) {
 
         await axios.delete(
-          `http://127.0.0.1:8000/favorites/${listingId}`,
+          `https://sprint-1-hr8e.onrender.com/favorites/${listingId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`
@@ -108,7 +108,7 @@ function BrowseItems() {
       } else {
 
         const response = await axios.post(
-          `http://127.0.0.1:8000/favorites/?listing_id=${listingId}`,
+          `https://sprint-1-hr8e.onrender.com/favorites/?listing_id=${listingId}`,
           {},
           {
             headers: {

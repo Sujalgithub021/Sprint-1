@@ -39,7 +39,7 @@ function Register() {
     try {
 
       await axios.post(
-        "http://127.0.0.1:8000/users/",
+        "https://sprint-1-hr8e.onrender.com/users/",
         {
           ...formData,
 

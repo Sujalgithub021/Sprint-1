@@ -26,7 +26,7 @@ function MyListings() {
       }
 
       const response = await axios.get(
-        "http://127.0.0.1:8000/listings/my",
+        "https://sprint-1-hr8e.onrender.com/listings/my",
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -83,7 +83,7 @@ function MyListings() {
       }
 
       await axios.delete(
-        `http://127.0.0.1:8000/listings/${listingId}`,
+        `https://sprint-1-hr8e.onrender.com/listings/${listingId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`

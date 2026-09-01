@@ -17,7 +17,7 @@ function Reviews() {
   const fetchReviews = async () => {
     try {
       const response = await axios.get(
-        "http://127.0.0.1:8000/reviews/"
+        "https://sprint-1-hr8e.onrender.com/reviews/"
       );
 
       setReviews(response.data);
@@ -37,7 +37,7 @@ function Reviews() {
       const token = localStorage.getItem("token");
 
       const response = await axios.post(
-        "http://127.0.0.1:8000/reviews/",
+        "https://sprint-1-hr8e.onrender.com/reviews/",
         {
           deal_id: Number(dealId),
           reviewed_user_id: Number(reviewedUserId),

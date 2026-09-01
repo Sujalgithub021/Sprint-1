@@ -44,7 +44,7 @@ function Profile() {
       }
 
       const response = await axios.get(
-        "http://127.0.0.1:8000/users/me",
+        "https://sprint-1-hr8e.onrender.com/users/me",
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -133,7 +133,7 @@ function Profile() {
       const token = localStorage.getItem("token");
 
       const response = await axios.put(
-        `http://127.0.0.1:8000/users/${user.id}`,
+        `https://sprint-1-hr8e.onrender.com/users/${user.id}`,
         {
           name: formData.name,
           email: formData.email,

@@ -52,7 +52,7 @@ function Exchanges() {
       }
 
       const response = await axios.get(
-        "http://127.0.0.1:8000/exchanges/",
+        "https://sprint-1-hr8e.onrender.com/exchanges/",
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -94,7 +94,7 @@ function Exchanges() {
       }
 
       const response = await axios.get(
-        "http://127.0.0.1:8000/listings/my",
+        "https://sprint-1-hr8e.onrender.com/listings/my",
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -215,7 +215,7 @@ function Exchanges() {
       );
 
       const response = await axios.post(
-        "http://127.0.0.1:8000/exchanges/",
+        "https://sprint-1-hr8e.onrender.com/exchanges/",
         payload,
         {
           headers: {
@@ -269,7 +269,7 @@ function Exchanges() {
         localStorage.getItem("token");
 
       await axios.put(
-        `http://127.0.0.1:8000/exchanges/${exchangeId}`,
+        `https://sprint-1-hr8e.onrender.com/exchanges/${exchangeId}`,
         {
           status: status
         },
@@ -311,7 +311,7 @@ function Exchanges() {
         localStorage.getItem("token");
 
       await axios.delete(
-        `http://127.0.0.1:8000/exchanges/${exchangeId}`,
+        `https://sprint-1-hr8e.onrender.com/exchanges/${exchangeId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`

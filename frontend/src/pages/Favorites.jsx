@@ -30,7 +30,7 @@ function Favorites() {
       }
 
       const response = await axios.get(
-        "http://127.0.0.1:8000/favorites/",
+        "https://sprint-1-hr8e.onrender.com/favorites/",
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -76,7 +76,7 @@ function Favorites() {
       const token = localStorage.getItem("token");
 
       await axios.delete(
-        `http://127.0.0.1:8000/favorites/${listingId}`,
+        `https://sprint-1-hr8e.onrender.com/favorites/${listingId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`

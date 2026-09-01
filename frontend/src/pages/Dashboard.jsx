@@ -11,7 +11,7 @@ function Dashboard() {
   const fetchListings = async () => {
     try {
       const response = await axios.get(
-        "http://127.0.0.1:8000/listings/"
+        "https://sprint-1-hr8e.onrender.com/listings/"
       );
 
       setListings(response.data);
