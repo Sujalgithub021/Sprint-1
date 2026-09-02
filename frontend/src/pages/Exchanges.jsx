@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import axios from "axios";
 
 function Exchanges() {
@@ -755,8 +756,8 @@ const receiver =
 
     <strong>
       📦 <Link to={`/listings/${exchange.offered_listing_id}`}>
-    {exchange.offered_listing_title}
-</Link>
+              {exchange.offered_listing_title}
+          </Link>
     </strong>
   </div>
 
@@ -766,8 +767,8 @@ const receiver =
 
     <strong>
       🎁 <Link to={`/listings/${exchange.requested_listing_id}`}>
-    {exchange.requested_listing_title}
-</Link>
+              {exchange.requested_listing_title}
+          </Link>
     </strong>
   </div>
 
