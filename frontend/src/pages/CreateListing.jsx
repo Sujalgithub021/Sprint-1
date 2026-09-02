@@ -19,6 +19,9 @@ function CreateListing() {
   });
 
   const [imageUrl, setImageUrl] = useState("");
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [imagePreview, setImagePreview] = useState("");
+  const [uploadingImage, setUploadingImage] = useState(false);
 
   const [loadingCategories, setLoadingCategories] =
     useState(true);
@@ -191,6 +194,77 @@ function CreateListing() {
   };
 
 
+  useEffect(() => {
+    return () => {
+      if (imagePreview) {
+        URL.revokeObjectURL(imagePreview);
+      }
+    };
+  }, [imagePreview]);
+
+
+  // ==================================================
+  // HANDLE IMAGE SELECTION
+  // ==================================================
+
+  const handleImageChange = (e) => {
+    const file = e.target.files?.[0];
+
+    if (!file) {
+      setSelectedImage(null);
+      setImagePreview("");
+      return;
+    }
+
+    if (!file.type.startsWith("image/")) {
+      setError("Please select a valid image file.");
+      setSelectedImage(null);
+      setImagePreview("");
+      return;
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      setError("Image size must be less than 5 MB.");
+      setSelectedImage(null);
+      setImagePreview("");
+      return;
+    }
+
+    setError("");
+    setSelectedImage(file);
+    setImageUrl("");
+    setImagePreview(URL.createObjectURL(file));
+  };
+
+
+  // ==================================================
+  // UPLOAD IMAGE TO CLOUDINARY
+  // ==================================================
+
+  const uploadImageToCloudinary = async (file) => {
+    const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+    const uploadPreset = "campus_exchange";
+
+    if (!cloudName) {
+      throw new Error("Cloudinary cloud name is not configured.");
+    }
+
+    const cloudinaryUrl =
+      `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`;
+
+    const data = new FormData();
+    data.append("file", file);
+    data.append("upload_preset", uploadPreset);
+
+    const response = await axios.post(
+      cloudinaryUrl,
+      data
+    );
+
+    return response.data.secure_url;
+  };
+
+
   // ==================================================
   // CREATE LISTING
   // ==================================================
@@ -319,46 +393,51 @@ function CreateListing() {
 
 
       // ==============================================
-      // ADD IMAGE
+      // UPLOAD IMAGE TO CLOUDINARY + SAVE IMAGE URL
       // ==============================================
 
-      if (imageUrl.trim()) {
+      if (selectedImage) {
 
         try {
 
+          setUploadingImage(true);
+
+          const cloudinaryImageUrl =
+            await uploadImageToCloudinary(selectedImage);
+
+          setImageUrl(cloudinaryImageUrl);
+
           await axios.post(
-
             "https://sprint-1-hr8e.onrender.com/listing-images/",
-
             {
-
-              listing_id:
-                createdListing.id,
-
-              image_url:
-                imageUrl.trim()
-
+              listing_id: createdListing.id,
+              image_url: cloudinaryImageUrl
             },
-
             {
-
               headers: {
-
-                Authorization:
-                  `Bearer ${token}`
-
+                Authorization: `Bearer ${token}`
               }
-
             }
-
           );
 
         } catch (imageError) {
 
           console.error(
-            "IMAGE ERROR:",
+            "IMAGE UPLOAD ERROR:",
             imageError
           );
+
+          setError(
+            imageError.response?.data?.error?.message ||
+            imageError.message ||
+            "Unable to upload image."
+          );
+
+          return;
+
+        } finally {
+
+          setUploadingImage(false);
 
         }
 
@@ -715,39 +794,36 @@ function CreateListing() {
             </h2>
 
             <p>
-              Add an image URL for your product.
+              Select an image from your computer.
             </p>
 
 
             <div className="listing-form-field">
 
               <label>
-                Image URL
+                Product Image
               </label>
 
               <input
-                type="url"
-                value={imageUrl}
-                onChange={(e) =>
-                  setImageUrl(e.target.value)
-                }
-                placeholder="https://example.com/product.jpg"
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
               />
+
+              <small>
+                JPG, PNG, WEBP or other image files. Maximum 5 MB.
+              </small>
 
             </div>
 
 
-            {imageUrl && (
+            {imagePreview && (
 
               <div className="listing-image-preview">
 
                 <img
-                  src={imageUrl}
+                  src={imagePreview}
                   alt="Product preview"
-                  onError={(e) => {
-                    e.currentTarget.style.display =
-                      "none";
-                  }}
                 />
 
               </div>
@@ -848,7 +924,9 @@ function CreateListing() {
             >
 
               {posting
-                ? "Posting Item..."
+                ? uploadingImage
+                  ? "Uploading Image..."
+                  : "Posting Item..."
                 : "📦 Post Item"}
 
             </button>
