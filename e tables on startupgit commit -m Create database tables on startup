@@ -1,0 +1,37 @@
+[1mdiff --git a/backend/app/database/database.py b/backend/app/database/database.py[m
+[1mindex 865246a..cb1b0c2 100644[m
+[1m--- a/backend/app/database/database.py[m
+[1m+++ b/backend/app/database/database.py[m
+[36m@@ -15,6 +15,7 @@[m [mDB_PORT = os.getenv("DB_PORT", "3306")[m
+ DATABASE_URL = ([m
+     f"mysql+pymysql://{DB_USER}:{DB_PASSWORD}"[m
+     f"@{DB_HOST}:{DB_PORT}/{DB_NAME}"[m
+[32m+[m[32m    f"?ssl=true"[m
+ )[m
+ [m
+ engine = create_engine([m
+[1mdiff --git a/backend/app/main.py b/backend/app/main.py[m
+[1mindex f41b597..3119fc0 100644[m
+[1m--- a/backend/app/main.py[m
+[1m+++ b/backend/app/main.py[m
+[36m@@ -1,6 +1,8 @@[m
+ from fastapi import FastAPI[m
+ from fastapi.middleware.cors import CORSMiddleware[m
+ [m
+[32m+[m[32mfrom app.database.database import Base, engine[m
+[32m+[m
+ from app.routers.user import router as user_router[m
+ from app.routers.listing import router as listing_router[m
+ from app.routers.favorite import router as favorite_router[m
+[36m@@ -36,4 +38,8 @@[m [mapp.include_router(deal_router)[m
+ app.include_router(review_router)[m
+ app.include_router(message_router)[m
+ app.include_router(auth_router)[m
+[31m-app.include_router(category_router)[m
+\ No newline at end of file[m
+[32m+[m[32mapp.include_router(category_router)[m
+[32m+[m
+[32m+[m
+[32m+[m[32m# Create database tables[m
+[32m+[m[32mBase.metadata.create_all(bind=engine)[m
+\ No newline at end of file[m

@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.database.database import Base, engine
+
 from app.routers.user import router as user_router
 from app.routers.listing import router as listing_router
 from app.routers.favorite import router as favorite_router
@@ -37,3 +39,7 @@ app.include_router(review_router)
 app.include_router(message_router)
 app.include_router(auth_router)
 app.include_router(category_router)
+
+
+# Create database tables
+Base.metadata.create_all(bind=engine)
