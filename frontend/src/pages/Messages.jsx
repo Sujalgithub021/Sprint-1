@@ -58,7 +58,7 @@ function Messages() {
       const token = localStorage.getItem("token");
 
       const response = await axios.get(
-        "http://127.0.0.1:8000/messages/",
+        "https://sprint-1-hr8e.onrender.com/messages/",
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -95,7 +95,7 @@ function Messages() {
       setListingId(urlListingId);
 
       const response = await axios.get(
-        `http://127.0.0.1:8000/listings/${urlListingId}`
+        `https://sprint-1-hr8e.onrender.com/listings/${urlListingId}`
       );
 
       const listing = response.data;
@@ -135,7 +135,7 @@ function Messages() {
       const token = localStorage.getItem("token");
 
       await axios.post(
-        "http://127.0.0.1:8000/messages/",
+        "https://sprint-1-hr8e.onrender.com/messages/",
         {
           receiver_id: Number(receiverId),
           listing_id: Number(listingId),
@@ -263,7 +263,7 @@ function Messages() {
       const token = localStorage.getItem("token");
 
       await axios.post(
-        "http://127.0.0.1:8000/messages/",
+        "https://sprint-1-hr8e.onrender.com/messages/",
         {
           receiver_id: conversation.otherUserId,
 
