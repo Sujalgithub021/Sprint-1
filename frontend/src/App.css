@@ -5175,3 +5175,8 @@ button:hover{
 .my-listing-remove-button:active {
   transform: translateY(0);
 }
+
+.details-image{
+  object-fit: cover;
+  object-position: center;
+}

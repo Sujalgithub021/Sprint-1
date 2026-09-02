@@ -354,7 +354,7 @@ const fetchMyListings = async () => {
 
 
         {/* ==================================================
-            IMAGE
+            IMAGES
             ================================================== */}
 
         <div className="details-image">
