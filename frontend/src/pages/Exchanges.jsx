@@ -754,7 +754,9 @@ const receiver =
     <span>You Offer</span>
 
     <strong>
-      📦 {exchange.offered_listing_title}
+      📦 <Link to={`/listings/${exchange.offered_listing_id}`}>
+    {exchange.offered_listing_title}
+</Link>
     </strong>
   </div>
 
@@ -763,7 +765,9 @@ const receiver =
     <span>You Want</span>
 
     <strong>
-      🎁 {exchange.requested_listing_title}
+      🎁 <Link to={`/listings/${exchange.requested_listing_id}`}>
+    {exchange.requested_listing_title}
+</Link>
     </strong>
   </div>
 
