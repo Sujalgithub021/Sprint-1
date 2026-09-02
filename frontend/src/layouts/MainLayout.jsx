@@ -63,13 +63,7 @@ function MainLayout() {
 
         </nav>
 
-        <div className="sidebar-bottom">
-
-          <button onClick={logout} className="logout-button">
-            🚪 Logout
-          </button>
-
-        </div>
+        
 
       </aside>
 

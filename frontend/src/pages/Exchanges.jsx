@@ -25,13 +25,17 @@ function Exchanges() {
 
   const [requestedListingId, setRequestedListingId] =
     useState(
-      searchParams.get("requested_listing_id") || ""
-    );
+    searchParams.get("requested_listing_id") ||
+    searchParams.get("listing_id") ||
+    ""
+  );
 
-  const [receiverId, setReceiverId] =
-    useState(
-      searchParams.get("receiver_id") || ""
-    );
+const [receiverId, setReceiverId] =
+  useState(
+    searchParams.get("receiver_id") ||
+    searchParams.get("seller_id") ||
+    ""
+  );
 
 
   // ==================================================
@@ -52,7 +56,7 @@ function Exchanges() {
       }
 
       const response = await axios.get(
-        "https://sprint-1-hr8e.onrender.com/exchanges/",
+        "http://127.0.0.1:8000/exchanges/",
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -94,7 +98,7 @@ function Exchanges() {
       }
 
       const response = await axios.get(
-        "https://sprint-1-hr8e.onrender.com/listings/my",
+        "http://127.0.0.1:8000/listings/my",
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -129,10 +133,12 @@ function Exchanges() {
   fetchExchanges();
 
   const requestedId =
-    searchParams.get("requested_listing_id");
+  searchParams.get("requested_listing_id") ||
+  searchParams.get("listing_id");
 
-  const receiver =
-    searchParams.get("receiver_id");
+const receiver =
+  searchParams.get("receiver_id") ||
+  searchParams.get("seller_id");
 
   if (requestedId && receiver) {
     setRequestedListingId(requestedId);
@@ -215,7 +221,7 @@ function Exchanges() {
       );
 
       const response = await axios.post(
-        "https://sprint-1-hr8e.onrender.com/exchanges/",
+        "http://127.0.0.1:8000/exchanges/",
         payload,
         {
           headers: {
@@ -269,7 +275,7 @@ function Exchanges() {
         localStorage.getItem("token");
 
       await axios.put(
-        `https://sprint-1-hr8e.onrender.com/exchanges/${exchangeId}`,
+        `http://127.0.0.1:8000/exchanges/${exchangeId}`,
         {
           status: status
         },
@@ -311,7 +317,7 @@ function Exchanges() {
         localStorage.getItem("token");
 
       await axios.delete(
-        `https://sprint-1-hr8e.onrender.com/exchanges/${exchangeId}`,
+        `http://127.0.0.1:8000/exchanges/${exchangeId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -823,22 +829,38 @@ function Exchanges() {
                 )}
 
 
-                {exchange.status ===
-                  "Accepted" && (
+                {exchange.status === "Accepted" && (
+  <div className="exchange-actions">
 
-                  <button
-                    className="exchange-primary-button"
-                    onClick={() =>
-                      updateExchange(
-                        exchange.id,
-                        "Completed"
-                      )
-                    }
-                  >
-                    ✓ Mark Completed
-                  </button>
+    <button
+      className="exchange-primary-button"
+      onClick={() =>
+        updateExchange(
+          exchange.id,
+          "Completed"
+        )
+      }
+    >
+      ✓ Mark Completed
+    </button>
 
-                )}
+    <button
+      className="exchange-chat-button"
+      onClick={() =>
+        navigate(
+          `/messages?user_id=${
+            exchange.requester_id === Number(localStorage.getItem("user_id"))
+              ? exchange.receiver_id
+              : exchange.requester_id
+          }`
+        )
+      }
+    >
+      💬 Chat
+    </button>
+
+  </div>
+)}
 
 
                 {(exchange.status ===
